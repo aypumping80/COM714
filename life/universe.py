@@ -17,4 +17,3 @@ class Universe:
     def display(self) -> None:
         for planet in self.__planets:
             print(f"Planet: {planet.__name}, Population: {planet.population()}")
-
