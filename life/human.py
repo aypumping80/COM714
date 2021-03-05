@@ -1,18 +1,24 @@
+from clothing import Clothing
+
 class Human:
     MAX_ENERGY = 100
     MOVE_ENERGY = 10
     REPRODUCE_ENERGY = 20
 
-    def __init__(self, name: str, age: int = 0, energy: int = 100) -> None:
+    def __init__(self, name:str, age:int=0, energy:int=100) -> None:
         self.name = name
         self.age = age
         self.energy = energy
+        self.clothing = []
 
     def __repr__(self) -> str:
         return f'human(name={self.name}, age={self.age})'
 
     def __str__(self) -> str:
         return f'{self.name} is {self.age} years old.'
+
+    def dress(self, clothing:Clothing):
+        self.clothing.add(clothing)
 
     def eat(self, amount) -> int:
         potential_energy = self.energy + amount
@@ -27,7 +33,7 @@ class Human:
     def grow(self) -> None:
         self.age += 1
 
-    def move(self, distance: int) -> bool:
+    def move(self, distance:int) -> bool:
         potential_energy = self.energy - distance
 
         if (potential_energy >= Human.MOVE_ENERGY):
@@ -43,4 +49,7 @@ class Human:
             self.energy = potential_energy
             return True
         else:
-            return False
+            return False    
+
+    def undress(self, clothing:Clothing):
+        self.clothing.remove(clothing)
